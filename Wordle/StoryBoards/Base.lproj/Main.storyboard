@@ -1,0 +1,1067 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VBK-q4-9ex">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--StartScreen-->
+        <scene sceneID="rGx-KU-Djk">
+            <objects>
+                <viewController title="StartScreen" id="VBK-q4-9ex" customClass="StartScreenViewController" customModule="Wordle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3zh-wa-nKG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="71" translatesAutoresizingMaskIntoConstraints="NO" id="qbe-Zl-Ygm">
+                                <rect key="frame" x="62.5" y="260" width="250" height="147"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OBA-lT-sVW">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="Nss-tt-Bt1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPL-gd-PNJ">
+                                        <rect key="frame" x="88" y="105" width="74" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="START"/>
+                                        <connections>
+                                            <action selector="startButtonPressed" destination="VBK-q4-9ex" eventType="touchUpInside" id="nmr-Ea-Wv7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ax8-RD-WtD">
+                                <rect key="frame" x="16" y="100" width="343" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="R64-WK-0ad"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qbe-Zl-Ygm" firstAttribute="centerY" secondItem="3zh-wa-nKG" secondAttribute="centerY" id="6E1-ZZ-osh"/>
+                            <constraint firstItem="Ax8-RD-WtD" firstAttribute="top" secondItem="R64-WK-0ad" secondAttribute="top" constant="100" id="FsS-yX-8ai"/>
+                            <constraint firstItem="Ax8-RD-WtD" firstAttribute="leading" secondItem="R64-WK-0ad" secondAttribute="leading" constant="16" id="Fu0-zs-oKi"/>
+                            <constraint firstItem="R64-WK-0ad" firstAttribute="trailing" secondItem="Ax8-RD-WtD" secondAttribute="trailing" constant="16" id="UQO-i4-12u"/>
+                            <constraint firstItem="qbe-Zl-Ygm" firstAttribute="centerX" secondItem="3zh-wa-nKG" secondAttribute="centerX" id="nzf-bT-KPQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="usernameTextField" destination="OBA-lT-sVW" id="7oE-eM-EB4"/>
+                        <segue destination="2HT-lO-crU" kind="presentation" identifier="showGameScreen" modalPresentationStyle="fullScreen" id="y9A-yK-BXy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7jN-u4-tfk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1539.1304347826087" y="73.660714285714278"/>
+        </scene>
+        <!--Game Screen View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="GameScreenViewController" customModule="Wordle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="N49-u9-faR">
+                                <rect key="frame" x="16" y="461" width="343" height="186"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ZLH-Cy-exy">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="39"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7H-dU-YSQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="24" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Й"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EzK-bs-PCW"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4B-LB-zL1">
+                                                <rect key="frame" x="29" y="0.0" width="24" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Ц"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9dn-pz-S7O"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Q2-dY-b86">
+                                                <rect key="frame" x="58" y="0.0" width="24" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="У"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mZm-NJ-CTL"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxk-uB-e2H">
+                                                <rect key="frame" x="87" y="0.0" width="24" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="К"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xEt-MN-V5L"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7RJ-Qp-TB4">
+                                                <rect key="frame" x="116" y="0.0" width="24" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Е"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8A9-Kb-Kk2"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Shf-TH-ZII">
+                                                <rect key="frame" x="145" y="0.0" width="24" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Н"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vVj-CO-E18"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoZ-oW-P91">
+                                                <rect key="frame" x="174" y="0.0" width="24" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Г"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="awo-dn-YG5"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHf-yj-P5D">
+                                                <rect key="frame" x="203" y="0.0" width="24" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Ш"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bpt-mM-1zm"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xak-oB-EKt">
+                                                <rect key="frame" x="232" y="0.0" width="24" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Щ"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nND-kF-lrq"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4QU-mR-mMO">
+                                                <rect key="frame" x="261" y="0.0" width="24" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="З"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YVN-Uu-1ic"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0RV-r6-UAH">
+                                                <rect key="frame" x="290" y="0.0" width="24" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Х"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="feh-FD-zc3"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjm-Hc-cAd">
+                                                <rect key="frame" x="319" y="0.0" width="24" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Ъ"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1aS-lk-Ffa"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ZbR-rv-VuL">
+                                        <rect key="frame" x="0.0" y="49" width="343" height="39"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVm-bL-uix">
+                                                <rect key="frame" x="0.0" y="0.0" width="26.5" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Ф"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dj1-Ie-j9c"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hh4-tg-EYZ">
+                                                <rect key="frame" x="31.5" y="0.0" width="27" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Ы"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rJT-Ig-Jd2"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zad-pz-oVL">
+                                                <rect key="frame" x="63.5" y="0.0" width="26.5" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="В"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H4Q-HV-Bda"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqG-sx-yBi">
+                                                <rect key="frame" x="95" y="0.0" width="26.5" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="А"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rLf-Tr-mUB"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2AA-iQ-YoL">
+                                                <rect key="frame" x="126.5" y="0.0" width="26.5" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="П"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZS2-1O-8FI"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="17" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsG-JH-S4i">
+                                                <rect key="frame" x="158" y="0.0" width="27" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Р"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GEm-5S-uyT"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="18" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJi-WZ-LsS">
+                                                <rect key="frame" x="190" y="0.0" width="26.5" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="О"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gEL-a0-GbJ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="19" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rq6-Iy-bQq">
+                                                <rect key="frame" x="221.5" y="0.0" width="26.5" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Л"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JK7-Be-hTj"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qq7-KZ-2f3">
+                                                <rect key="frame" x="253" y="0.0" width="26.5" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Д"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jey-WU-Cqh"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="21" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nja-ba-cvQ">
+                                                <rect key="frame" x="284.5" y="0.0" width="27" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Ж"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nO6-Eq-I8m"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="22" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wba-cp-k9y">
+                                                <rect key="frame" x="316.5" y="0.0" width="26.5" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Э"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iVg-5I-JXc"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="W80-eD-fIi">
+                                        <rect key="frame" x="24.5" y="98" width="294" height="39"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="23" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNy-zW-SiF">
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Я"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uge-Sp-Mlj"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="24" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3k0-qt-xcP">
+                                                <rect key="frame" x="33" y="0.0" width="30" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Ч"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d2q-7M-KFb"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tb-Ev-PwM">
+                                                <rect key="frame" x="66" y="0.0" width="30" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="С"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RiF-AV-KLI"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="26" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3yf-ya-yZm">
+                                                <rect key="frame" x="99" y="0.0" width="30" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="М"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cS8-MG-8C1"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="27" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OiI-aO-3EA">
+                                                <rect key="frame" x="132" y="0.0" width="30" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="И"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pkb-Wd-bnN"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="28" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jie-HZ-7bA">
+                                                <rect key="frame" x="165" y="0.0" width="30" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Т"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Uv-uI-MDV"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="29" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WaI-Z6-xFc">
+                                                <rect key="frame" x="198" y="0.0" width="30" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Ь"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fcu-9G-nUz"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="30" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nv-vl-8Tn">
+                                                <rect key="frame" x="231" y="0.0" width="30" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Б"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gee-cK-xEr"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="31" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j48-l1-Ejz">
+                                                <rect key="frame" x="264" y="0.0" width="30" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Ю"/>
+                                                <connections>
+                                                    <action selector="clickAnyLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vvo-z9-MoT"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="6eg-C9-sIf">
+                                        <rect key="frame" x="59.5" y="147" width="224" height="39"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8Q-d7-wSF">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="39"/>
+                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="wZA-fE-aTE"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Стереть">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="backspaceButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="dHg-NT-6nq"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0q7-k2-E1B">
+                                                <rect key="frame" x="124" y="0.0" width="100" height="39"/>
+                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="JkE-0J-0k5"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Ввод">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="enterButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="dPW-1F-tNA"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="l0P-iK-760">
+                                <rect key="frame" x="20" y="101" width="335" height="298"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="tga-WY-FW7">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="43"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="csf-sJ-rkA">
+                                                <rect key="frame" x="0.0" y="0.0" width="54" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                            </textField>
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0ax-3T-lWI">
+                                                <rect key="frame" x="70" y="0.0" width="54.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9YT-rB-l5Y">
+                                                <rect key="frame" x="140.5" y="0.0" width="54" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gps-1g-BAD">
+                                                <rect key="frame" x="210.5" y="0.0" width="54.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6e9-VT-pWU">
+                                                <rect key="frame" x="281" y="0.0" width="54" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="LqD-f6-ySf">
+                                        <rect key="frame" x="0.0" y="51" width="335" height="43"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ibl-LI-Zkd">
+                                                <rect key="frame" x="0.0" y="0.0" width="54" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rQQ-FF-ex7">
+                                                <rect key="frame" x="70" y="0.0" width="54.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ucI-Yi-bpA">
+                                                <rect key="frame" x="140.5" y="0.0" width="54" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dE2-Ga-aY6">
+                                                <rect key="frame" x="210.5" y="0.0" width="54.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ofw-wg-Ho6">
+                                                <rect key="frame" x="281" y="0.0" width="54" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="A0h-ps-hSg">
+                                        <rect key="frame" x="0.0" y="102" width="335" height="43"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zL6-Ql-9AP">
+                                                <rect key="frame" x="0.0" y="0.0" width="54" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AU5-Ce-V0y">
+                                                <rect key="frame" x="70" y="0.0" width="54.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r4v-2t-chu">
+                                                <rect key="frame" x="140.5" y="0.0" width="54" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zdQ-1L-rGV">
+                                                <rect key="frame" x="210.5" y="0.0" width="54.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9dV-9u-Sx7">
+                                                <rect key="frame" x="281" y="0.0" width="54" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Owz-uj-nqP">
+                                        <rect key="frame" x="0.0" y="153" width="335" height="43"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BFi-Db-Hi2">
+                                                <rect key="frame" x="0.0" y="0.0" width="54" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zaW-hy-VXo">
+                                                <rect key="frame" x="70" y="0.0" width="54.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dLt-Af-mtY">
+                                                <rect key="frame" x="140.5" y="0.0" width="54" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hho-af-Wa0">
+                                                <rect key="frame" x="210.5" y="0.0" width="54.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AP2-FH-VyM">
+                                                <rect key="frame" x="281" y="0.0" width="54" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="G9e-bt-NSv">
+                                        <rect key="frame" x="0.0" y="204" width="335" height="43"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B5O-8S-5gq">
+                                                <rect key="frame" x="0.0" y="0.0" width="54" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Prg-1r-pIT">
+                                                <rect key="frame" x="70" y="0.0" width="54.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RfZ-vz-Wc4">
+                                                <rect key="frame" x="140.5" y="0.0" width="54" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hna-cW-EMl">
+                                                <rect key="frame" x="210.5" y="0.0" width="54.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ja9-9d-sBT">
+                                                <rect key="frame" x="281" y="0.0" width="54" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ex6-Ke-Jhe">
+                                        <rect key="frame" x="0.0" y="255" width="335" height="43"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UAA-Ie-TUj">
+                                                <rect key="frame" x="0.0" y="0.0" width="54" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RmS-7V-8ZT">
+                                                <rect key="frame" x="70" y="0.0" width="54.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0T7-2X-55i">
+                                                <rect key="frame" x="140.5" y="0.0" width="54" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QvQ-ZO-JSa">
+                                                <rect key="frame" x="210.5" y="0.0" width="54.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZyZ-ky-RDg">
+                                                <rect key="frame" x="281" y="0.0" width="54" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="slq-Bv-CGD">
+                                <rect key="frame" x="20" y="91" width="335" height="298"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="PKY-Tp-whB">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="43"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wcx-G7-mFw">
+                                                <rect key="frame" x="0.0" y="0.0" width="72" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                            </textField>
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s3C-2j-ogj">
+                                                <rect key="frame" x="88" y="0.0" width="71.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ehM-L4-hSF">
+                                                <rect key="frame" x="175.5" y="0.0" width="72" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bnO-c1-72q">
+                                                <rect key="frame" x="263.5" y="0.0" width="71.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="KHq-48-fPU">
+                                        <rect key="frame" x="0.0" y="51" width="335" height="43"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Won-ff-PHv">
+                                                <rect key="frame" x="0.0" y="0.0" width="72" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a06-uB-idO">
+                                                <rect key="frame" x="88" y="0.0" width="71.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="im2-00-j2j">
+                                                <rect key="frame" x="175.5" y="0.0" width="72" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="81j-1H-9BS">
+                                                <rect key="frame" x="263.5" y="0.0" width="71.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="6yb-lt-G6b">
+                                        <rect key="frame" x="0.0" y="102" width="335" height="43"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YaG-x1-7Sz">
+                                                <rect key="frame" x="0.0" y="0.0" width="72" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xcp-2G-Zlb">
+                                                <rect key="frame" x="88" y="0.0" width="71.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1T2-JP-KP5">
+                                                <rect key="frame" x="175.5" y="0.0" width="72" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bTL-47-eXy">
+                                                <rect key="frame" x="263.5" y="0.0" width="71.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Jvw-Q1-Fls">
+                                        <rect key="frame" x="0.0" y="153" width="335" height="43"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FeB-bR-6Eg">
+                                                <rect key="frame" x="0.0" y="0.0" width="72" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qlC-QP-eIS">
+                                                <rect key="frame" x="88" y="0.0" width="71.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x82-mY-xwh">
+                                                <rect key="frame" x="175.5" y="0.0" width="72" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HaH-1w-pGj">
+                                                <rect key="frame" x="263.5" y="0.0" width="71.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="7JH-3z-qUu">
+                                        <rect key="frame" x="0.0" y="204" width="335" height="43"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tug-ly-NT3">
+                                                <rect key="frame" x="0.0" y="0.0" width="72" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="spv-zn-Z2z">
+                                                <rect key="frame" x="88" y="0.0" width="71.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tJg-uE-a1k">
+                                                <rect key="frame" x="175.5" y="0.0" width="72" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qyX-aU-MpX">
+                                                <rect key="frame" x="263.5" y="0.0" width="71.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="LFy-8Z-ePa">
+                                        <rect key="frame" x="0.0" y="255" width="335" height="43"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Cr-Cq-liu">
+                                                <rect key="frame" x="0.0" y="0.0" width="72" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5K5-M7-xOR">
+                                                <rect key="frame" x="88" y="0.0" width="71.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z1F-ay-1Mw">
+                                                <rect key="frame" x="175.5" y="0.0" width="72" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NrG-Cg-jSy">
+                                                <rect key="frame" x="263.5" y="0.0" width="71.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="Gbr-XY-nOg">
+                                <rect key="frame" x="56.5" y="530" width="262" height="31"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iDI-0u-ClE">
+                                        <rect key="frame" x="0.0" y="0.0" width="101" height="31"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Новая игра">
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="newGameButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="IhB-Gy-6Sl"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18e-px-nsq">
+                                        <rect key="frame" x="161" y="0.0" width="101" height="31"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Результаты">
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vM-ly-F47">
+                                <rect key="frame" x="167" y="409" width="41.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="slq-Bv-CGD" secondAttribute="top" constant="5" id="6w8-ix-naJ"/>
+                            <constraint firstItem="l0P-iK-760" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="BpC-QN-snG"/>
+                            <constraint firstAttribute="trailing" secondItem="N49-u9-faR" secondAttribute="trailing" constant="16" id="C6F-dl-Usv"/>
+                            <constraint firstItem="l0P-iK-760" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="IBC-v9-hhi"/>
+                            <constraint firstItem="slq-Bv-CGD" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.446777" id="RdG-hb-xyE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="N49-u9-faR" secondAttribute="bottom" constant="20" id="TZi-Ry-qUR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Gbr-XY-nOg" secondAttribute="bottom" constant="106" id="Tkk-km-PHp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="slq-Bv-CGD" secondAttribute="trailing" constant="20" id="ZnT-xq-are"/>
+                            <constraint firstItem="Gbr-XY-nOg" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="aef-bK-dVB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="l0P-iK-760" secondAttribute="trailing" constant="20" id="ciM-Ib-6Rc"/>
+                            <constraint firstItem="slq-Bv-CGD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="lVB-Cr-fms"/>
+                            <constraint firstItem="6vM-ly-F47" firstAttribute="top" secondItem="slq-Bv-CGD" secondAttribute="bottom" constant="20" id="tdL-Rg-wna"/>
+                            <constraint firstItem="N49-u9-faR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="w4k-eq-zlz"/>
+                            <constraint firstItem="6vM-ly-F47" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="w5P-yO-00o"/>
+                            <constraint firstItem="l0P-iK-760" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.446777" id="zjq-pd-dpa"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="wAh-lq-d7V">
+                        <barButtonItem key="leftBarButtonItem" title="Информация" image="questionmark.circle" catalog="system" id="jT2-di-U5A"/>
+                        <barButtonItem key="rightBarButtonItem" title="Настройки" image="gearshape" catalog="system" id="8Vi-Sj-TpJ"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="endgameButtonsSV" destination="Gbr-XY-nOg" id="7Hh-g9-j8v"/>
+                        <outlet property="gameScreenButtonsSV" destination="N49-u9-faR" id="EHV-N3-dMM"/>
+                        <outlet property="label" destination="6vM-ly-F47" id="je2-gT-bfx"/>
+                        <outlet property="levelFiveStackView" destination="l0P-iK-760" id="Tjk-IR-KWb"/>
+                        <outlet property="levelFourStackView" destination="slq-Bv-CGD" id="KIA-ln-n9y"/>
+                        <outletCollection property="firstTryLevelFiveTF" destination="csf-sJ-rkA" collectionClass="NSMutableArray" id="BTR-bN-ptz"/>
+                        <outletCollection property="firstTryLevelFiveTF" destination="0ax-3T-lWI" collectionClass="NSMutableArray" id="mSf-ea-Ti6"/>
+                        <outletCollection property="firstTryLevelFiveTF" destination="9YT-rB-l5Y" collectionClass="NSMutableArray" id="QmM-uS-IDc"/>
+                        <outletCollection property="firstTryLevelFiveTF" destination="Gps-1g-BAD" collectionClass="NSMutableArray" id="d95-PB-7sT"/>
+                        <outletCollection property="firstTryLevelFiveTF" destination="6e9-VT-pWU" collectionClass="NSMutableArray" id="KT5-0P-RGv"/>
+                        <outletCollection property="secondTryLevelFiveTF" destination="ibl-LI-Zkd" collectionClass="NSMutableArray" id="pDa-H2-O3G"/>
+                        <outletCollection property="secondTryLevelFiveTF" destination="rQQ-FF-ex7" collectionClass="NSMutableArray" id="7mv-6j-pCS"/>
+                        <outletCollection property="secondTryLevelFiveTF" destination="ucI-Yi-bpA" collectionClass="NSMutableArray" id="0e8-f7-dh1"/>
+                        <outletCollection property="secondTryLevelFiveTF" destination="dE2-Ga-aY6" collectionClass="NSMutableArray" id="o0T-JU-6qs"/>
+                        <outletCollection property="secondTryLevelFiveTF" destination="Ofw-wg-Ho6" collectionClass="NSMutableArray" id="SRb-zy-3Zv"/>
+                        <outletCollection property="screenLettersButtons" destination="a7H-dU-YSQ" collectionClass="NSMutableArray" id="pO3-2A-ZYv"/>
+                        <outletCollection property="screenLettersButtons" destination="b4B-LB-zL1" collectionClass="NSMutableArray" id="QYt-OH-c7t"/>
+                        <outletCollection property="screenLettersButtons" destination="1Q2-dY-b86" collectionClass="NSMutableArray" id="EpC-f4-hEG"/>
+                        <outletCollection property="screenLettersButtons" destination="wxk-uB-e2H" collectionClass="NSMutableArray" id="6dq-CL-Qgb"/>
+                        <outletCollection property="screenLettersButtons" destination="7RJ-Qp-TB4" collectionClass="NSMutableArray" id="bO0-bw-y4k"/>
+                        <outletCollection property="screenLettersButtons" destination="Shf-TH-ZII" collectionClass="NSMutableArray" id="AlY-wY-Y8U"/>
+                        <outletCollection property="screenLettersButtons" destination="zoZ-oW-P91" collectionClass="NSMutableArray" id="KJB-k3-GzO"/>
+                        <outletCollection property="screenLettersButtons" destination="IHf-yj-P5D" collectionClass="NSMutableArray" id="kTc-iI-YJB"/>
+                        <outletCollection property="screenLettersButtons" destination="Xak-oB-EKt" collectionClass="NSMutableArray" id="gA5-3V-y5g"/>
+                        <outletCollection property="screenLettersButtons" destination="4QU-mR-mMO" collectionClass="NSMutableArray" id="Zx5-os-NzZ"/>
+                        <outletCollection property="screenLettersButtons" destination="0RV-r6-UAH" collectionClass="NSMutableArray" id="aVU-dK-rg7"/>
+                        <outletCollection property="screenLettersButtons" destination="zjm-Hc-cAd" collectionClass="NSMutableArray" id="D07-jz-1XP"/>
+                        <outletCollection property="screenLettersButtons" destination="cVm-bL-uix" collectionClass="NSMutableArray" id="i4d-l3-YSa"/>
+                        <outletCollection property="screenLettersButtons" destination="Hh4-tg-EYZ" collectionClass="NSMutableArray" id="Og0-VL-19P"/>
+                        <outletCollection property="screenLettersButtons" destination="Zad-pz-oVL" collectionClass="NSMutableArray" id="GRD-jO-9k6"/>
+                        <outletCollection property="screenLettersButtons" destination="sqG-sx-yBi" collectionClass="NSMutableArray" id="Zlx-rD-Lia"/>
+                        <outletCollection property="screenLettersButtons" destination="2AA-iQ-YoL" collectionClass="NSMutableArray" id="064-Pv-GEC"/>
+                        <outletCollection property="screenLettersButtons" destination="hsG-JH-S4i" collectionClass="NSMutableArray" id="UmE-CD-jwb"/>
+                        <outletCollection property="screenLettersButtons" destination="AJi-WZ-LsS" collectionClass="NSMutableArray" id="l05-38-pXk"/>
+                        <outletCollection property="screenLettersButtons" destination="rq6-Iy-bQq" collectionClass="NSMutableArray" id="sQs-tM-UQL"/>
+                        <outletCollection property="screenLettersButtons" destination="Qq7-KZ-2f3" collectionClass="NSMutableArray" id="TOZ-cD-KVW"/>
+                        <outletCollection property="screenLettersButtons" destination="Nja-ba-cvQ" collectionClass="NSMutableArray" id="wib-eB-vx4"/>
+                        <outletCollection property="screenLettersButtons" destination="Wba-cp-k9y" collectionClass="NSMutableArray" id="hrI-7M-bPb"/>
+                        <outletCollection property="screenLettersButtons" destination="jNy-zW-SiF" collectionClass="NSMutableArray" id="4Oc-DQ-j3U"/>
+                        <outletCollection property="screenLettersButtons" destination="3k0-qt-xcP" collectionClass="NSMutableArray" id="bCU-Mc-x4Y"/>
+                        <outletCollection property="screenLettersButtons" destination="6tb-Ev-PwM" collectionClass="NSMutableArray" id="sb4-EB-E9y"/>
+                        <outletCollection property="screenLettersButtons" destination="3yf-ya-yZm" collectionClass="NSMutableArray" id="csx-Nd-EIb"/>
+                        <outletCollection property="screenLettersButtons" destination="OiI-aO-3EA" collectionClass="NSMutableArray" id="unQ-lF-pHd"/>
+                        <outletCollection property="screenLettersButtons" destination="Jie-HZ-7bA" collectionClass="NSMutableArray" id="aTq-px-t7L"/>
+                        <outletCollection property="screenLettersButtons" destination="WaI-Z6-xFc" collectionClass="NSMutableArray" id="mUh-4e-U2y"/>
+                        <outletCollection property="screenLettersButtons" destination="8nv-vl-8Tn" collectionClass="NSMutableArray" id="gvj-7b-KId"/>
+                        <outletCollection property="screenLettersButtons" destination="j48-l1-Ejz" collectionClass="NSMutableArray" id="nvp-dh-heQ"/>
+                        <outletCollection property="manageButtons" destination="t8Q-d7-wSF" collectionClass="NSMutableArray" id="DLn-1m-LMX"/>
+                        <outletCollection property="manageButtons" destination="0q7-k2-E1B" collectionClass="NSMutableArray" id="zye-R3-dIq"/>
+                        <outletCollection property="thirdTryLevelFiveTF" destination="zL6-Ql-9AP" collectionClass="NSMutableArray" id="tPG-Ip-z6B"/>
+                        <outletCollection property="thirdTryLevelFiveTF" destination="AU5-Ce-V0y" collectionClass="NSMutableArray" id="eT9-1j-rcf"/>
+                        <outletCollection property="thirdTryLevelFiveTF" destination="r4v-2t-chu" collectionClass="NSMutableArray" id="cxv-ec-UHA"/>
+                        <outletCollection property="thirdTryLevelFiveTF" destination="zdQ-1L-rGV" collectionClass="NSMutableArray" id="vQQ-cI-wPW"/>
+                        <outletCollection property="thirdTryLevelFiveTF" destination="9dV-9u-Sx7" collectionClass="NSMutableArray" id="dGo-vB-xWR"/>
+                        <outletCollection property="fourthTryLevelFiveTF" destination="BFi-Db-Hi2" collectionClass="NSMutableArray" id="rFq-WB-bfh"/>
+                        <outletCollection property="fourthTryLevelFiveTF" destination="zaW-hy-VXo" collectionClass="NSMutableArray" id="H7U-Ng-Oay"/>
+                        <outletCollection property="fourthTryLevelFiveTF" destination="dLt-Af-mtY" collectionClass="NSMutableArray" id="bfK-0w-6gg"/>
+                        <outletCollection property="fourthTryLevelFiveTF" destination="hho-af-Wa0" collectionClass="NSMutableArray" id="gvx-TC-amv"/>
+                        <outletCollection property="fourthTryLevelFiveTF" destination="AP2-FH-VyM" collectionClass="NSMutableArray" id="T3S-cw-4Vp"/>
+                        <outletCollection property="fifthTryLevelFiveTF" destination="B5O-8S-5gq" collectionClass="NSMutableArray" id="AcR-Zk-2aw"/>
+                        <outletCollection property="fifthTryLevelFiveTF" destination="Prg-1r-pIT" collectionClass="NSMutableArray" id="mRs-Mn-6kN"/>
+                        <outletCollection property="fifthTryLevelFiveTF" destination="RfZ-vz-Wc4" collectionClass="NSMutableArray" id="SdK-WO-rW8"/>
+                        <outletCollection property="fifthTryLevelFiveTF" destination="hna-cW-EMl" collectionClass="NSMutableArray" id="9B8-EQ-Blm"/>
+                        <outletCollection property="fifthTryLevelFiveTF" destination="Ja9-9d-sBT" collectionClass="NSMutableArray" id="IgE-Rv-rQl"/>
+                        <outletCollection property="sixthTryLevelFiveTF" destination="UAA-Ie-TUj" collectionClass="NSMutableArray" id="4mu-Wa-E1j"/>
+                        <outletCollection property="sixthTryLevelFiveTF" destination="RmS-7V-8ZT" collectionClass="NSMutableArray" id="33N-yC-80E"/>
+                        <outletCollection property="sixthTryLevelFiveTF" destination="0T7-2X-55i" collectionClass="NSMutableArray" id="qqn-Av-b4B"/>
+                        <outletCollection property="sixthTryLevelFiveTF" destination="QvQ-ZO-JSa" collectionClass="NSMutableArray" id="ZWo-lG-seE"/>
+                        <outletCollection property="sixthTryLevelFiveTF" destination="ZyZ-ky-RDg" collectionClass="NSMutableArray" id="oM2-rv-G7Q"/>
+                        <outletCollection property="firstTryLevelFourTF" destination="wcx-G7-mFw" collectionClass="NSMutableArray" id="VpG-at-qyE"/>
+                        <outletCollection property="thirdTryLevelFourTF" destination="YaG-x1-7Sz" collectionClass="NSMutableArray" id="hVH-XM-pJ7"/>
+                        <outletCollection property="secondTryLevelFourTF" destination="Won-ff-PHv" collectionClass="NSMutableArray" id="G2G-Fe-Iev"/>
+                        <outletCollection property="fourthTryLevelFourTF" destination="FeB-bR-6Eg" collectionClass="NSMutableArray" id="bpz-nt-CGd"/>
+                        <outletCollection property="fifthTryLevelFourTF" destination="Tug-ly-NT3" collectionClass="NSMutableArray" id="Mxn-KG-AVk"/>
+                        <outletCollection property="firstTryLevelFourTF" destination="s3C-2j-ogj" collectionClass="NSMutableArray" id="nZE-wZ-svi"/>
+                        <outletCollection property="firstTryLevelFourTF" destination="ehM-L4-hSF" collectionClass="NSMutableArray" id="X3a-q6-NJ4"/>
+                        <outletCollection property="firstTryLevelFourTF" destination="bnO-c1-72q" collectionClass="NSMutableArray" id="h6h-1F-Bwu"/>
+                        <outletCollection property="secondTryLevelFourTF" destination="a06-uB-idO" collectionClass="NSMutableArray" id="eTa-jf-wck"/>
+                        <outletCollection property="secondTryLevelFourTF" destination="im2-00-j2j" collectionClass="NSMutableArray" id="is1-82-DMJ"/>
+                        <outletCollection property="secondTryLevelFourTF" destination="81j-1H-9BS" collectionClass="NSMutableArray" id="NcN-wF-aPd"/>
+                        <outletCollection property="thirdTryLevelFourTF" destination="Xcp-2G-Zlb" collectionClass="NSMutableArray" id="2dt-p9-lol"/>
+                        <outletCollection property="thirdTryLevelFourTF" destination="1T2-JP-KP5" collectionClass="NSMutableArray" id="8ky-7J-eoB"/>
+                        <outletCollection property="thirdTryLevelFourTF" destination="bTL-47-eXy" collectionClass="NSMutableArray" id="NT8-Uy-Hz1"/>
+                        <outletCollection property="fourthTryLevelFourTF" destination="qlC-QP-eIS" collectionClass="NSMutableArray" id="aaw-Do-nmf"/>
+                        <outletCollection property="fourthTryLevelFourTF" destination="x82-mY-xwh" collectionClass="NSMutableArray" id="jJg-ts-osx"/>
+                        <outletCollection property="fourthTryLevelFourTF" destination="HaH-1w-pGj" collectionClass="NSMutableArray" id="G0T-Mq-9hR"/>
+                        <outletCollection property="fifthTryLevelFourTF" destination="spv-zn-Z2z" collectionClass="NSMutableArray" id="R9C-2B-gl8"/>
+                        <outletCollection property="fifthTryLevelFourTF" destination="tJg-uE-a1k" collectionClass="NSMutableArray" id="eNE-Jz-9hm"/>
+                        <outletCollection property="fifthTryLevelFourTF" destination="qyX-aU-MpX" collectionClass="NSMutableArray" id="Ckz-Nn-3M1"/>
+                        <outletCollection property="sixthTryLevelFourTF" destination="2Cr-Cq-liu" collectionClass="NSMutableArray" id="jGI-85-ZkF"/>
+                        <outletCollection property="sixthTryLevelFourTF" destination="5K5-M7-xOR" collectionClass="NSMutableArray" id="ZiI-eA-cpn"/>
+                        <outletCollection property="sixthTryLevelFourTF" destination="z1F-ay-1Mw" collectionClass="NSMutableArray" id="MUb-4N-O5X"/>
+                        <outletCollection property="sixthTryLevelFourTF" destination="NrG-Cg-jSy" collectionClass="NSMutableArray" id="6R6-1N-HJT"/>
+                        <outletCollection property="manageButtons" destination="iDI-0u-ClE" collectionClass="NSMutableArray" id="WlG-gO-slH"/>
+                        <outletCollection property="manageButtons" destination="18e-px-nsq" collectionClass="NSMutableArray" id="UJI-ap-NjR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="344.92753623188406" y="73.660714285714278"/>
+        </scene>
+        <!--ResultScreen-->
+        <scene sceneID="0cZ-V6-ufC">
+            <objects>
+                <viewController title="ResultScreen" id="X4r-Tt-Iqr" customClass="ResultScreenViewController" customModule="Wordle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="l7i-vm-PPl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="UjS-Ut-Hvs"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CKa-Jl-mmu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1341" y="74"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qGZ-gW-aP2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2HT-lO-crU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="ExL-ut-J5a">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Ujq-Nh-VrW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nst-8v-JWm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-565.21739130434787" y="73.660714285714278"/>
+        </scene>
+        <!--AboutScreen-->
+        <scene sceneID="u8g-sp-EBd">
+            <objects>
+                <viewController title="AboutScreen" id="9qz-Re-tbZ" customClass="AboutScreenViewController" customModule="Wordle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XOi-yY-wRQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="4pw-LB-SfG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2jE-i3-mmP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-61" y="836"/>
+        </scene>
+        <!--SettingsScreen-->
+        <scene sceneID="VHV-uh-g1B">
+            <objects>
+                <viewController title="SettingsScreen" id="5Of-mO-ukD" customClass="SettingsScreenViewController" customModule="Wordle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uvN-rT-EfS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="NAN-4L-vP4">
+                                <rect key="frame" x="16" y="70" width="343" height="75.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Смена цвета фона" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMw-Zc-GDW">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="fUE-5Y-80r">
+                                        <rect key="frame" x="-2" y="45.5" width="347" height="31"/>
+                                    </slider>
+                                </subviews>
+                            </stackView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kr3-zs-RWt">
+                                <rect key="frame" x="184" y="426" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Смена режима игры" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hs4-r7-6a7">
+                                <rect key="frame" x="31" y="371" width="353" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5 букв" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62U-Rp-p7l">
+                                <rect key="frame" x="267" y="431" width="51" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4 буквы" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLd-RY-FVl">
+                                <rect key="frame" x="82" y="431" width="64" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jlY-gk-zT3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NAN-4L-vP4" firstAttribute="top" secondItem="jlY-gk-zT3" secondAttribute="top" constant="70" id="Elk-2u-8S6"/>
+                            <constraint firstItem="NAN-4L-vP4" firstAttribute="leading" secondItem="jlY-gk-zT3" secondAttribute="leading" constant="16" id="bRY-tt-2tG"/>
+                            <constraint firstItem="jlY-gk-zT3" firstAttribute="trailing" secondItem="NAN-4L-vP4" secondAttribute="trailing" constant="16" id="e0y-dx-bIH"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y75-em-HG4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="879.71014492753625" y="835.71428571428567"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="questionmark.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
