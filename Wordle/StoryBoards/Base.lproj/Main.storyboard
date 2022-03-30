@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VBK-q4-9ex">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VBK-q4-9ex">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -839,11 +839,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wAh-lq-d7V">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="h37-Yj-BAS"/>
-                        <barButtonItem key="leftBarButtonItem" title="Информация" image="questionmark.circle" catalog="system" id="jT2-di-U5A"/>
+                        <barButtonItem key="leftBarButtonItem" title="Информация" image="questionmark.circle" catalog="system" id="jT2-di-U5A">
+                            <connections>
+                                <segue destination="9qz-Re-tbZ" kind="presentation" id="TA6-aq-oMP"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Настройки" image="gearshape" catalog="system" id="8Vi-Sj-TpJ">
                             <connections>
-                                <segue destination="5Of-mO-ukD" kind="show" id="6eb-7g-Jo7"/>
+                                <segue destination="5Of-mO-ukD" kind="presentation" id="N1w-eh-9Sb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -987,7 +990,7 @@
             <objects>
                 <viewController title="AboutScreen" id="9qz-Re-tbZ" customClass="AboutScreenViewController" customModule="Wordle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XOi-yY-wRQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="4pw-LB-SfG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -995,18 +998,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2jE-i3-mmP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-61" y="836"/>
+            <point key="canvasLocation" x="-167" y="858"/>
         </scene>
         <!--SettingsScreen-->
         <scene sceneID="VHV-uh-g1B">
             <objects>
                 <viewController title="SettingsScreen" id="5Of-mO-ukD" customClass="SettingsScreenViewController" customModule="Wordle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uvN-rT-EfS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="NAN-4L-vP4">
-                                <rect key="frame" x="16" y="166" width="343" height="75.5"/>
+                                <rect key="frame" x="16" y="70" width="343" height="75.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Смена цвета фона" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMw-Zc-GDW">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
@@ -1022,9 +1025,6 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kr3-zs-RWt">
                                 <rect key="frame" x="184" y="426" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="changeDifficultLevel" destination="5Of-mO-ukD" eventType="valueChanged" id="dRK-2q-Bfg"/>
-                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Смена режима игры" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hs4-r7-6a7">
                                 <rect key="frame" x="31" y="371" width="353" height="21"/>
@@ -1056,14 +1056,10 @@
                             <constraint firstItem="jlY-gk-zT3" firstAttribute="trailing" secondItem="NAN-4L-vP4" secondAttribute="trailing" constant="16" id="e0y-dx-bIH"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Настройки" id="2HT-Kf-snQ"/>
-                    <connections>
-                        <outlet property="difficultLevelSwitch" destination="kr3-zs-RWt" id="1gQ-S8-LD2"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y75-em-HG4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="833" y="879"/>
+            <point key="canvasLocation" x="879" y="858"/>
         </scene>
     </scenes>
     <resources>

@@ -19,9 +19,27 @@ class StartScreenViewController: UIViewController {
     }
     
     @IBAction func startButtonPressed() {
+        guard let inputText = usernameTextField.text, !inputText.isEmpty else {
+            showAlert(title: "Username is empty", message: "Enter your name")
+            return
+        }
+        if let _ = Double(inputText) {
+            showAlert(title: "Wrong format", message: "Enter your name")
+            return
+        }
+        
         currentUser.playerUsername = usernameTextField.text ?? ""
         currentUser.getRandomWorlde(on: currentUser.difficultLevel)
         
         performSegue(withIdentifier: "showGameScreen", sender: nil)
+    }
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            self.usernameTextField.text = ""
+        }
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
 }
