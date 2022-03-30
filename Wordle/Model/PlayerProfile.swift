@@ -10,7 +10,7 @@ import Foundation
 struct PlayerProfile {
     var playerUsername = ""
     var currentWordle = ""
-    var difficultLevel = 4
+    var difficultLevel = 5
     
     mutating func getRandomWorlde(on level: Int) {
         if level == 5 {

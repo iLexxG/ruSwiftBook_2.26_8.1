@@ -65,6 +65,12 @@ class GameScreenViewController: UIViewController {
         startNewGame(atLevel: currentUser.difficultLevel)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let settingsVC = segue.destination as? SettingsScreenViewController else { return }
+        settingsVC.currentUser = currentUser
+        settingsVC.delegate = self
+    }
+    
     //MARK: - IB Actions
     @IBAction func clickAnyLetter(_ sender: UIButton) {
         guard let activeTextField = playerAnswers[currentAttempt].firstIndex(where: {$0.text == ""}) else { return }
@@ -106,10 +112,8 @@ class GameScreenViewController: UIViewController {
     }
     
     @IBAction func newGameButtonPressed() {
-        currentAttempt = 0
         currentUser.getRandomWorlde(on: currentUser.difficultLevel)
         startNewGame(atLevel: currentUser.difficultLevel)
-        label.text = currentUser.currentWordle
     }
 }
 
@@ -129,6 +133,12 @@ extension UIView {
 // MARK: - StartNewGameDelegate
 extension GameScreenViewController: StartNewGameDelegate {
     func startNewGame(atLevel level: Int) {
+        playerAnswers = []
+        currentAttempt = 0
+        self.currentUser.difficultLevel = level
+        currentUser.getRandomWorlde(on: level)
+        label.text = currentUser.currentWordle
+        
         if level == 5 {
             levelFourStackView.isHidden = true
             levelFiveStackView.isHidden = false
@@ -162,6 +172,5 @@ extension GameScreenViewController: StartNewGameDelegate {
         endgameButtonsSV.isHidden = true
         gameScreenButtonsSV.isHidden = false
         UIView.transition(with: super.view, duration: 0.2, options: [.transitionCurlUp], animations: nil)
-        
     }
 }
