@@ -29,7 +29,6 @@ class StartScreenViewController: UIViewController {
         }
         
         currentUser.playerUsername = usernameTextField.text ?? ""
-        currentUser.getRandomWorlde(on: currentUser.difficultLevel)
         
         performSegue(withIdentifier: "showGameScreen", sender: nil)
     }

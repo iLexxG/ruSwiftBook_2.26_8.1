@@ -1004,9 +1004,9 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkN-7h-lBf">
                                         <rect key="frame" x="0.0" y="28.5" width="343" height="155.5"/>
-                                        <mutableString key="text">Цель игры - угадать название страны с шести попыток. 
+                                        <string key="text">Цель игры - угадать название страны с шести попыток. 
 После каждой попытки цвет букв будет меняться, 
-чтобы показать, какие буквы есть в загаданном слове! Например, мы пытаемся отгадать слово ГОCТЬ.  Первым мы ввели слово Ребус. Буква С есть в загаданном слове, но стоит в другом месте.</mutableString>
+чтобы показать, какие буквы есть в загаданном слове! Например, мы пытаемся отгадать слово ГОCТЬ.  Первым мы ввели слово Ребус. Буква С есть в загаданном слове, но стоит в другом месте.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
