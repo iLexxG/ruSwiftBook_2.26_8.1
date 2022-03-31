@@ -42,7 +42,9 @@ class GameScreenViewController: UIViewController {
     //MARK: - Public properties
     var currentUser: PlayerProfile!
     var playerAnswers: [[UITextField]] = []
+    var correctLettersIndex: [Int] = []
     var currentAttempt = 0
+    var wordForMultiContainCheck = ""
     
     //MARK: - Override Methods
     override func viewDidLoad() {
@@ -73,38 +75,38 @@ class GameScreenViewController: UIViewController {
     
     //MARK: - IB Actions
     @IBAction func clickAnyLetter(_ sender: UIButton) {
-        guard let activeTextField = playerAnswers[currentAttempt].firstIndex(where: {$0.text == ""}) else { return }
+        guard let activeTextField = playerAnswers[currentAttempt].firstIndex(
+            where: {$0.text == ""}
+        ) else { return }
         playerAnswers[currentAttempt][activeTextField].text = DataStore.shared.letters[sender.tag]
     }
     
     @IBAction func backspaceButtonPressed() {
-        guard let activeTextField = playerAnswers[currentAttempt].lastIndex(where: {$0.text != ""}) else { return }
+        guard let activeTextField = playerAnswers[currentAttempt].lastIndex(
+            where: {$0.text != ""}
+        ) else { return }
         playerAnswers[currentAttempt][activeTextField].text = ""
     }
     
     @IBAction func enterButtonPressed() {
-        var userAttemptWord = ""
-        
-        for index in 0..<currentUser.currentWordle.count {
-            guard let currentUserLetter = playerAnswers[currentAttempt][index].text else { return }
-            let currentWordleLetter = String(Array(currentUser.currentWordle)[index])
-            userAttemptWord += currentUserLetter
-            
-            if currentUserLetter == currentWordleLetter {
-                UIView.transition(with: playerAnswers[currentAttempt][index], duration: 0.2, options: [.transitionFlipFromTop, .showHideTransitionViews], animations: nil)
-                playerAnswers[currentAttempt][index].backgroundColor = UIColor.green
-            } else if currentUser.currentWordle.contains(currentUserLetter) {
-                UIView.transition(with: playerAnswers[currentAttempt][index], duration: 0.2, options: [.transitionFlipFromTop, .showHideTransitionViews], animations: nil)
-                playerAnswers[currentAttempt][index].backgroundColor = UIColor.yellow
-            } else {
-                playerAnswers[currentAttempt][index].backgroundColor = UIColor.gray
-                playerAnswers[currentAttempt][index].shake()
-            }
+        let enteredUserWord = getEnteredUserWord()
+        correctLettersIndex = []
+        wordForMultiContainCheck = currentUser.currentWordle
+
+        if enteredUserWord.count != currentUser.difficultLevel {
+            showAlert(
+                title: "Ошибка",
+                message: "Слово должно быть из \(currentUser.difficultLevel) букв!"
+            )
+            return
         }
-        
-        if userAttemptWord == currentUser.currentWordle || currentAttempt == 5 {
+
+        checkCorrectLetters()
+        checkOtherLetters()
+
+        if enteredUserWord == currentUser.currentWordle || currentAttempt == 5 {
             gameScreenButtonsSV.isHidden = true
-            UIView.transition(with: gameScreenButtonsSV, duration: 0.5, options: [.transitionCrossDissolve], animations: nil)
+            makeAnimation(with: gameScreenButtonsSV, .transitionFlipFromTop)
             endgameButtonsSV.isHidden = false
         } else {
             currentAttempt += 1
@@ -112,11 +114,68 @@ class GameScreenViewController: UIViewController {
     }
     
     @IBAction func newGameButtonPressed() {
-        currentUser.getRandomWorlde(on: currentUser.difficultLevel)
         startNewGame(atLevel: currentUser.difficultLevel)
     }
+    
+    //MARK: - Private Methods
+    private func getEnteredUserWord() -> String {
+        var enteredUserWord = ""
+        
+        playerAnswers[currentAttempt].forEach { textField in
+            guard let currentLetter = textField.text else { return }
+            enteredUserWord += currentLetter
+        }
+        return enteredUserWord
+    }
+    
+    private func checkCorrectLetters() {
+        for index in 0..<currentUser.currentWordle.count {
+            let currentTextField = playerAnswers[currentAttempt][index]
+            let currentWordleLetter = String(Array(currentUser.currentWordle)[index])
+            guard let currentUserLetter = currentTextField.text else { return }
+            guard let currentScreenButton = DataStore.shared.letters.firstIndex(of: currentUserLetter) else { return }
+            
+            if currentUserLetter == currentWordleLetter {
+                makeAnimation(with: currentTextField, .transitionFlipFromTop)
+                currentTextField.backgroundColor = UIColor.systemGreen
+                currentTextField.textColor = UIColor.white
+                screenLettersButtons[currentScreenButton].backgroundColor = UIColor.systemGreen
+                
+                if let i = wordForMultiContainCheck.firstIndex(of: Character(currentUserLetter)) {
+                    wordForMultiContainCheck.remove(at: i)
+                }
+                
+                correctLettersIndex.append(index)
+            }
+        }
+    }
+    
+    private func checkOtherLetters() {
+        for index in 0..<currentUser.currentWordle.count {
+            if correctLettersIndex.contains(index) { continue }
+            
+            let currentTextField = playerAnswers[currentAttempt][index]
+            guard let currentUserLetter = currentTextField.text else { return }
+            guard let currentScreenButton = DataStore.shared.letters.firstIndex(of: currentUserLetter) else { return }
+            
+            if wordForMultiContainCheck.contains(currentUserLetter) {
+                makeAnimation(with: currentTextField, .transitionFlipFromTop)
+                currentTextField.backgroundColor = UIColor.systemYellow
+                currentTextField.textColor = UIColor.white
+                screenLettersButtons[currentScreenButton].backgroundColor = UIColor.systemYellow
+                
+                if let i = wordForMultiContainCheck.firstIndex(of: Character(currentUserLetter)) {
+                    wordForMultiContainCheck.remove(at: i)
+                }
+            } else {
+                currentTextField.shake()
+                currentTextField.backgroundColor = UIColor.systemGray
+                currentTextField.textColor = UIColor.white
+                screenLettersButtons[currentScreenButton].backgroundColor = UIColor.systemGray
+            }
+        }
+    }
 }
-
 // MARK: - Animation
 extension UIView {
     func shake(duration: TimeInterval = 0.05, shakeCount: Float = 3, xValue: CGFloat = 3, yValue: CGFloat = 0){
@@ -127,6 +186,27 @@ extension UIView {
         animation.fromValue = NSValue(cgPoint: CGPoint(x: self.center.x - xValue, y: self.center.y - yValue))
         animation.toValue = NSValue(cgPoint: CGPoint(x: self.center.x + xValue, y: self.center.y - yValue))
         self.layer.add(animation, forKey: "shake")
+    }
+}
+
+extension GameScreenViewController {
+    private func makeAnimation(with uiView: UIView, _ options: UIView.AnimationOptions) {
+        UIView.transition(
+            with: uiView,
+            duration: 0.5,
+            options: options,
+            animations: nil
+        )
+    }
+}
+
+// MARK: - Show Alert
+extension GameScreenViewController {
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
 }
 
@@ -171,6 +251,6 @@ extension GameScreenViewController: StartNewGameDelegate {
         
         endgameButtonsSV.isHidden = true
         gameScreenButtonsSV.isHidden = false
-        UIView.transition(with: super.view, duration: 0.2, options: [.transitionCurlUp], animations: nil)
+        makeAnimation(with: super.view, .transitionCurlUp)
     }
 }
