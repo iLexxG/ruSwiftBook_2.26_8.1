@@ -42,7 +42,8 @@ class GameScreenViewController: UIViewController {
     //MARK: - Public properties
     var currentUser: PlayerProfile!
     var playerAnswers: [[UITextField]] = []
-    var correctLettersIndex: [Int] = []
+    var correctLettersIndexInAttempt: [Int] = []
+    var correctLettersIndexInGame: [Int] = []
     var currentAttempt = 0
     var wordForMultiContainCheck = ""
     
@@ -90,7 +91,7 @@ class GameScreenViewController: UIViewController {
     
     @IBAction func enterButtonPressed() {
         let enteredUserWord = getEnteredUserWord()
-        correctLettersIndex = []
+        correctLettersIndexInAttempt = []
         wordForMultiContainCheck = currentUser.currentWordle
 
         if enteredUserWord.count != currentUser.difficultLevel {
@@ -111,6 +112,25 @@ class GameScreenViewController: UIViewController {
         } else {
             currentAttempt += 1
         }
+    }
+    
+    @IBAction func helpButtonPressed() {
+        let possibleIndexForHelp = Array(stride(from: 0, to: currentUser.difficultLevel, by: 1))
+            .filter {correctLettersIndexInGame.contains($0) == false}
+        guard let indexForHelp = possibleIndexForHelp.randomElement() else { return }
+
+        for index in 0..<currentUser.difficultLevel where index != indexForHelp {
+            playerAnswers[currentAttempt][index].shake()
+            playerAnswers[currentAttempt][index].backgroundColor = UIColor.systemGray
+        }
+
+        playerAnswers[currentAttempt][indexForHelp].text = String(Array(currentUser.currentWordle)[indexForHelp])
+        makeAnimation(with: playerAnswers[currentAttempt][indexForHelp], .transitionFlipFromTop)
+        playerAnswers[currentAttempt][indexForHelp].backgroundColor = UIColor.systemGreen
+        playerAnswers[currentAttempt][indexForHelp].textColor = UIColor.white
+
+        currentAttempt += 1
+        correctLettersIndexInGame.append(indexForHelp)
     }
     
     @IBAction func newGameButtonPressed() {
@@ -144,15 +164,15 @@ class GameScreenViewController: UIViewController {
                 if let i = wordForMultiContainCheck.firstIndex(of: Character(currentUserLetter)) {
                     wordForMultiContainCheck.remove(at: i)
                 }
-                
-                correctLettersIndex.append(index)
+                correctLettersIndexInGame.append(index)
+                correctLettersIndexInAttempt.append(index)
             }
         }
     }
     
     private func checkOtherLetters() {
         for index in 0..<currentUser.currentWordle.count {
-            if correctLettersIndex.contains(index) { continue }
+            if correctLettersIndexInAttempt.contains(index) { continue }
             
             let currentTextField = playerAnswers[currentAttempt][index]
             guard let currentUserLetter = currentTextField.text else { return }
@@ -176,6 +196,7 @@ class GameScreenViewController: UIViewController {
         }
     }
 }
+
 // MARK: - Animation
 extension UIView {
     func shake(duration: TimeInterval = 0.05, shakeCount: Float = 3, xValue: CGFloat = 3, yValue: CGFloat = 0){
@@ -215,6 +236,7 @@ extension GameScreenViewController: StartNewGameDelegate {
     func startNewGame(atLevel level: Int) {
         playerAnswers = []
         currentAttempt = 0
+        correctLettersIndexInGame = []
         self.currentUser.difficultLevel = level
         currentUser.getRandomWorlde(on: level)
         label.text = currentUser.currentWordle
@@ -244,6 +266,7 @@ extension GameScreenViewController: StartNewGameDelegate {
         
         playerAnswers.forEach { currentStackView in
             currentStackView.forEach { currentTextField in
+                currentTextField.textColor = UIColor.black
                 currentTextField.text = ""
                 currentTextField.backgroundColor = UIColor.white
             }
