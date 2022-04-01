@@ -11,6 +11,9 @@ struct PlayerProfile {
     var playerUsername = ""
     var currentWordle = ""
     var difficultLevel = 5
+    var wordIsGuessed = false
+    var guessedLetters = 0
+    var succsesAttempt = 0
     
     mutating func getRandomWorlde(on level: Int) {
         if level == 5 {
