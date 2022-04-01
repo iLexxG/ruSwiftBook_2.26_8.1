@@ -8,29 +8,32 @@
 import UIKit
 
 class ResultScreenViewController: UITableViewController {
-
     var currentUser: PlayerProfile!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        "Ваш резульат, \(currentUser.playerUsername):"
+    }
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        2
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "gameResult", for: indexPath)
+        let currentCell = tableView.dequeueReusableCell(withIdentifier: "gameResult", for: indexPath)
+        var content = currentCell.defaultContentConfiguration()
         
-        var content = cell.defaultContentConfiguration()
-//        content.text = currentUser.playerUsername
-//        
-//        
-//        cell.contentConfiguration = content
+        if indexPath.row == 0 {
+            content.text = currentUser.currentWordle
+        } else {
+            content.text = String(currentUser.difficultLevel)
+        }
         
-        return cell
+        currentCell.contentConfiguration = content
+        return currentCell
     }
 }

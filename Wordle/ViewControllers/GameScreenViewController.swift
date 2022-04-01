@@ -69,11 +69,12 @@ class GameScreenViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let settingsVC = segue.destination as? SettingsScreenViewController else { return }
-        settingsVC.currentUser = currentUser
-        settingsVC.delegate = self
-        guard let resultVC = segue.destination as? ResultScreenViewController else { return }
-        resultVC.currentUser = currentUser
+        if let settingsVC = segue.destination as? SettingsScreenViewController {
+            settingsVC.currentUser = currentUser
+            settingsVC.delegate = self
+        } else if let resultVC = segue.destination as? ResultScreenViewController {
+            resultVC.currentUser = currentUser
+        }
     }
     
     //MARK: - IB Actions
@@ -109,7 +110,7 @@ class GameScreenViewController: UIViewController {
 
         if enteredUserWord == currentUser.currentWordle || currentAttempt == 5 {
             gameScreenButtonsSV.isHidden = true
-            makeAnimation(with: gameScreenButtonsSV, .transitionFlipFromTop)
+            animate(gameScreenButtonsSV, with: .transitionFlipFromTop)
             endgameButtonsSV.isHidden = false
         } else {
             currentAttempt += 1
@@ -117,19 +118,36 @@ class GameScreenViewController: UIViewController {
     }
     
     @IBAction func helpButtonPressed() {
+        let currentTextFields = playerAnswers[currentAttempt]
         let possibleIndexForHelp = Array(stride(from: 0, to: currentUser.difficultLevel, by: 1))
             .filter {correctLettersIndexInGame.contains($0) == false}
+        
+        if currentAttempt == 5 || possibleIndexForHelp.isEmpty {
+            for index in 0..<currentUser.difficultLevel {
+                currentTextFields[index].text = String(Array(currentUser.currentWordle)[index])
+            }
+            enterButtonPressed()
+            return
+        }
+        
         guard let indexForHelp = possibleIndexForHelp.randomElement() else { return }
-
+        
         for index in 0..<currentUser.difficultLevel where index != indexForHelp {
-            playerAnswers[currentAttempt][index].shake()
-            playerAnswers[currentAttempt][index].backgroundColor = UIColor.systemGray
+            currentTextFields[index].shake()
+            currentTextFields[index].backgroundColor = .systemGray
         }
 
-        playerAnswers[currentAttempt][indexForHelp].text = String(Array(currentUser.currentWordle)[indexForHelp])
-        makeAnimation(with: playerAnswers[currentAttempt][indexForHelp], .transitionFlipFromTop)
-        playerAnswers[currentAttempt][indexForHelp].backgroundColor = UIColor.systemGreen
-        playerAnswers[currentAttempt][indexForHelp].textColor = UIColor.white
+        currentTextFields[indexForHelp].text = String(Array(currentUser.currentWordle)[indexForHelp])
+        guard let currentScreenButton = DataStore.shared.letters.firstIndex(
+            of: currentTextFields[indexForHelp].text ?? ""
+        ) else { return }
+        
+        animateLetter(
+            in: currentTextFields[indexForHelp],
+            and: currentScreenButton,
+            with: .transitionFlipFromTop,
+            by: .systemGreen
+        )
 
         currentAttempt += 1
         correctLettersIndexInGame.append(indexForHelp)
@@ -158,14 +176,17 @@ class GameScreenViewController: UIViewController {
             guard let currentScreenButton = DataStore.shared.letters.firstIndex(of: currentUserLetter) else { return }
             
             if currentUserLetter == currentWordleLetter {
-                makeAnimation(with: currentTextField, .transitionFlipFromTop)
-                currentTextField.backgroundColor = UIColor.systemGreen
-                currentTextField.textColor = UIColor.white
-                screenLettersButtons[currentScreenButton].backgroundColor = UIColor.systemGreen
+                animateLetter(
+                    in: currentTextField,
+                    and: currentScreenButton,
+                    with: .transitionFlipFromTop,
+                    by: .systemGreen
+                )
                 
                 if let i = wordForMultiContainCheck.firstIndex(of: Character(currentUserLetter)) {
                     wordForMultiContainCheck.remove(at: i)
                 }
+                
                 correctLettersIndexInGame.append(index)
                 correctLettersIndexInAttempt.append(index)
             }
@@ -181,19 +202,21 @@ class GameScreenViewController: UIViewController {
             guard let currentScreenButton = DataStore.shared.letters.firstIndex(of: currentUserLetter) else { return }
             
             if wordForMultiContainCheck.contains(currentUserLetter) {
-                makeAnimation(with: currentTextField, .transitionFlipFromTop)
-                currentTextField.backgroundColor = UIColor.systemYellow
-                currentTextField.textColor = UIColor.white
-                screenLettersButtons[currentScreenButton].backgroundColor = UIColor.systemYellow
+                animateLetter(
+                    in: currentTextField,
+                    and: currentScreenButton,
+                    with: .transitionFlipFromTop,
+                    by: .systemYellow
+                )
                 
                 if let i = wordForMultiContainCheck.firstIndex(of: Character(currentUserLetter)) {
                     wordForMultiContainCheck.remove(at: i)
                 }
             } else {
                 currentTextField.shake()
-                currentTextField.backgroundColor = UIColor.systemGray
-                currentTextField.textColor = UIColor.white
-                screenLettersButtons[currentScreenButton].backgroundColor = UIColor.systemGray
+                currentTextField.backgroundColor = .systemGray
+                currentTextField.textColor = .white
+                screenLettersButtons[currentScreenButton].backgroundColor = .systemGray
             }
         }
     }
@@ -213,9 +236,26 @@ extension UIView {
 }
 
 extension GameScreenViewController {
-    private func makeAnimation(with uiView: UIView, _ options: UIView.AnimationOptions) {
+    private func animateLetter(
+        in currentTextField: UITextField,
+        and currentScreenButton: Int,
+        with options: UIView.AnimationOptions,
+        by color: UIColor
+    ) {
         UIView.transition(
-            with: uiView,
+            with: currentTextField,
+            duration: 0.5,
+            options: options,
+            animations: nil
+        )
+        currentTextField.backgroundColor = color
+        currentTextField.textColor = .white
+        screenLettersButtons[currentScreenButton].backgroundColor = color
+    }
+    
+    private func animate(_ uiItem: UIView, with options: UIView.AnimationOptions) {
+        UIView.transition(
+            with: uiItem,
             duration: 0.5,
             options: options,
             animations: nil
@@ -266,16 +306,20 @@ extension GameScreenViewController: StartNewGameDelegate {
             playerAnswers.append(sixthTryLevelFourTF)
         }
         
+        screenLettersButtons.forEach { currentButton in
+            currentButton.backgroundColor = .white
+        }
+        
         playerAnswers.forEach { currentStackView in
             currentStackView.forEach { currentTextField in
-                currentTextField.textColor = UIColor.black
+                currentTextField.textColor = .black
                 currentTextField.text = ""
-                currentTextField.backgroundColor = UIColor.white
+                currentTextField.backgroundColor = .white
             }
         }
         
         endgameButtonsSV.isHidden = true
         gameScreenButtonsSV.isHidden = false
-        makeAnimation(with: super.view, .transitionCurlUp)
+        animate(super.view, with: .transitionCurlUp)
     }
 }

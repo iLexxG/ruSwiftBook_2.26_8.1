@@ -9,6 +9,9 @@ import UIKit
 
 class SettingsScreenViewController: UIViewController {
     
+    @IBOutlet var label1: UILabel!
+    @IBOutlet var label2: UILabel!
+    
     @IBOutlet var difficultLevelSwitch: UISwitch!
     
     var currentUser: PlayerProfile!
@@ -22,6 +25,9 @@ class SettingsScreenViewController: UIViewController {
         } else {
             difficultLevelSwitch.isOn = false
         }
+        
+        label1.text = currentUser.playerUsername
+        label2.text = currentUser.currentWordle
     }
     
     @IBAction func changeDifficultLevel() {
