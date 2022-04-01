@@ -51,7 +51,6 @@ class GameScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Welcome, \(currentUser.playerUsername)"
-        label.text = currentUser.currentWordle
         
         screenLettersButtons.forEach { letter in
             letter.layer.cornerRadius = 10
@@ -109,7 +108,6 @@ class GameScreenViewController: UIViewController {
         checkOtherLetters()
 
         if enteredUserWord == currentUser.currentWordle {
-            currentUser.succsesAttempt = currentAttempt
             currentUser.wordIsGuessed = true
             endCurrentGame()
         } else if currentAttempt == 5 {
@@ -151,7 +149,8 @@ class GameScreenViewController: UIViewController {
             with: .transitionFlipFromTop,
             by: .systemGreen
         )
-
+        
+        currentUser.helpsCount += 1
         currentAttempt += 1
         correctLettersIndexInGame.append(indexForHelp)
     }
@@ -225,6 +224,9 @@ class GameScreenViewController: UIViewController {
     }
     
     private func endCurrentGame() {
+        currentUser.succsesAttempt = currentAttempt
+        currentUser.playerRank = Rank(withHelpsCount: currentUser.helpsCount)
+        
         gameScreenButtonsSV.isHidden = true
         animate(gameScreenButtonsSV, with: .transitionFlipFromTop)
         endgameButtonsSV.isHidden = false
@@ -289,9 +291,9 @@ extension GameScreenViewController: StartNewGameDelegate {
         currentAttempt = 0
         correctLettersIndexInGame = []
         self.currentUser.difficultLevel = level
+        currentUser.helpsCount = 0
         currentUser.guessedLetters = 0
         currentUser.getRandomWorlde(on: level)
-        label.text = currentUser.currentWordle
         
         if level == 5 {
             levelFourStackView.isHidden = true

@@ -8,10 +8,6 @@
 import UIKit
 
 class SettingsScreenViewController: UIViewController {
-    
-    @IBOutlet var label1: UILabel!
-    @IBOutlet var label2: UILabel!
-    
     @IBOutlet var difficultLevelSwitch: UISwitch!
     
     var currentUser: PlayerProfile!
@@ -19,15 +15,13 @@ class SettingsScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Настройки"
         
         if currentUser.difficultLevel == 5 {
             difficultLevelSwitch.isOn = true
         } else {
             difficultLevelSwitch.isOn = false
         }
-        
-        label1.text = currentUser.playerUsername
-        label2.text = currentUser.currentWordle
     }
     
     @IBAction func changeDifficultLevel() {

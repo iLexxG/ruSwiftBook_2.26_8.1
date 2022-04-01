@@ -3,6 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="71" translatesAutoresizingMaskIntoConstraints="NO" id="qbe-Zl-Ygm">
-                                <rect key="frame" x="62.5" y="260" width="250" height="147"/>
+                                <rect key="frame" x="62.5" y="262" width="250" height="143"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OBA-lT-sVW">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="34"/>
@@ -25,11 +26,14 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="Nss-tt-Bt1"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="VBK-q4-9ex" id="OsP-2k-fLp"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPL-gd-PNJ">
-                                        <rect key="frame" x="88" y="105" width="74" height="42"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <rect key="frame" x="96" y="105" width="58" height="38"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="START"/>
                                         <connections>
@@ -38,20 +42,28 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ax8-RD-WtD">
-                                <rect key="frame" x="16" y="100" width="343" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wordle Countries" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ax8-RD-WtD">
+                                <rect key="frame" x="16" y="100" width="343" height="68"/>
+                                <fontDescription key="fontDescription" name="PartyLetPlain" family="Party LET" pointSize="58"/>
+                                <color key="textColor" systemColor="tintColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StartScreen" translatesAutoresizingMaskIntoConstraints="NO" id="Spw-cT-rqy">
+                                <rect key="frame" x="0.0" y="449.5" width="375" height="251.5"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="R64-WK-0ad"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="qbe-Zl-Ygm" firstAttribute="centerY" secondItem="3zh-wa-nKG" secondAttribute="centerY" id="6E1-ZZ-osh"/>
+                            <constraint firstItem="Spw-cT-rqy" firstAttribute="width" secondItem="3zh-wa-nKG" secondAttribute="width" id="DRT-Sj-ebX"/>
                             <constraint firstItem="Ax8-RD-WtD" firstAttribute="top" secondItem="R64-WK-0ad" secondAttribute="top" constant="100" id="FsS-yX-8ai"/>
                             <constraint firstItem="Ax8-RD-WtD" firstAttribute="leading" secondItem="R64-WK-0ad" secondAttribute="leading" constant="16" id="Fu0-zs-oKi"/>
+                            <constraint firstItem="Spw-cT-rqy" firstAttribute="height" secondItem="3zh-wa-nKG" secondAttribute="height" multiplier="0.377232" id="Hmc-Tj-R0b"/>
+                            <constraint firstItem="Spw-cT-rqy" firstAttribute="leading" secondItem="R64-WK-0ad" secondAttribute="leading" id="J4z-2r-vWF"/>
                             <constraint firstItem="R64-WK-0ad" firstAttribute="trailing" secondItem="Ax8-RD-WtD" secondAttribute="trailing" constant="16" id="UQO-i4-12u"/>
+                            <constraint firstItem="R64-WK-0ad" firstAttribute="trailing" secondItem="Spw-cT-rqy" secondAttribute="trailing" id="WWR-3d-0u5"/>
+                            <constraint firstItem="Spw-cT-rqy" firstAttribute="bottom" secondItem="R64-WK-0ad" secondAttribute="bottom" constant="34" id="iE5-db-4vZ"/>
                             <constraint firstItem="qbe-Zl-Ygm" firstAttribute="centerX" secondItem="3zh-wa-nKG" secondAttribute="centerX" id="nzf-bT-KPQ"/>
                         </constraints>
                     </view>
@@ -62,7 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7jN-u4-tfk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1539.1304347826087" y="73.660714285714278"/>
+            <point key="canvasLocation" x="-1540.5797101449277" y="72.991071428571431"/>
         </scene>
         <!--Game Screen View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -411,7 +423,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="6eg-C9-sIf">
-                                        <rect key="frame" x="59.5" y="147" width="224" height="39"/>
+                                        <rect key="frame" x="35.5" y="147" width="272.5" height="39"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8Q-d7-wSF">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="39"/>
@@ -428,8 +440,25 @@
                                                     <action selector="backspaceButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="dHg-NT-6nq"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="saA-Wa-Dot">
+                                                <rect key="frame" x="124" y="0.0" width="24.5" height="39"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal">
+                                                    <imageReference key="image" image="exclamationmark.bubble.fill" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
+                                                        <hierarchicalColors>
+                                                            <color systemColor="labelColor"/>
+                                                            <color systemColor="secondaryLabelColor"/>
+                                                            <color systemColor="tertiaryLabelColor"/>
+                                                        </hierarchicalColors>
+                                                    </imageReference>
+                                                </state>
+                                                <connections>
+                                                    <action selector="helpButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="pOM-HZ-QKp"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0q7-k2-E1B">
-                                                <rect key="frame" x="124" y="0.0" width="100" height="39"/>
+                                                <rect key="frame" x="172.5" y="0.0" width="100" height="39"/>
                                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="JkE-0J-0k5"/>
@@ -814,20 +843,6 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vM-ly-F47">
-                                <rect key="frame" x="167" y="409" width="41.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="saA-Wa-Dot">
-                                <rect key="frame" x="227" y="409" width="92" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                <connections>
-                                    <action selector="helpButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="pOM-HZ-QKp"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -839,15 +854,11 @@
                             <constraint firstItem="slq-Bv-CGD" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.446777" id="RdG-hb-xyE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="N49-u9-faR" secondAttribute="bottom" constant="20" id="TZi-Ry-qUR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Gbr-XY-nOg" secondAttribute="bottom" constant="106" id="Tkk-km-PHp"/>
-                            <constraint firstItem="saA-Wa-Dot" firstAttribute="top" secondItem="slq-Bv-CGD" secondAttribute="bottom" constant="20" id="Xiq-pC-C5Q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="slq-Bv-CGD" secondAttribute="trailing" constant="20" id="ZnT-xq-are"/>
                             <constraint firstItem="Gbr-XY-nOg" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="aef-bK-dVB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="l0P-iK-760" secondAttribute="trailing" constant="20" id="ciM-Ib-6Rc"/>
                             <constraint firstItem="slq-Bv-CGD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="lVB-Cr-fms"/>
-                            <constraint firstItem="6vM-ly-F47" firstAttribute="top" secondItem="slq-Bv-CGD" secondAttribute="bottom" constant="20" id="tdL-Rg-wna"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="saA-Wa-Dot" secondAttribute="trailing" constant="56" id="tvM-fO-moc"/>
                             <constraint firstItem="N49-u9-faR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="w4k-eq-zlz"/>
-                            <constraint firstItem="6vM-ly-F47" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="w5P-yO-00o"/>
                             <constraint firstItem="l0P-iK-760" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.446777" id="zjq-pd-dpa"/>
                         </constraints>
                     </view>
@@ -867,7 +878,6 @@
                     <connections>
                         <outlet property="endgameButtonsSV" destination="Gbr-XY-nOg" id="7Hh-g9-j8v"/>
                         <outlet property="gameScreenButtonsSV" destination="N49-u9-faR" id="EHV-N3-dMM"/>
-                        <outlet property="label" destination="6vM-ly-F47" id="je2-gT-bfx"/>
                         <outlet property="levelFiveStackView" destination="l0P-iK-760" id="Tjk-IR-KWb"/>
                         <outlet property="levelFourStackView" destination="slq-Bv-CGD" id="KIA-ln-n9y"/>
                         <outletCollection property="firstTryLevelFiveTF" destination="csf-sJ-rkA" collectionClass="NSMutableArray" id="BTR-bN-ptz"/>
@@ -1038,7 +1048,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wc1-pQ-OH4">
-                                <rect key="frame" x="16" y="20" width="343" height="543"/>
+                                <rect key="frame" x="16" y="20" width="343" height="494.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ПРАВИЛА ИГРЫ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yh4-GG-bXX">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
@@ -1047,60 +1057,65 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkN-7h-lBf">
-                                        <rect key="frame" x="0.0" y="28.5" width="343" height="155.5"/>
-                                        <string key="text">Цель игры - угадать название страны с шести попыток. 
+                                        <rect key="frame" x="0.0" y="28.5" width="343" height="86"/>
+                                        <mutableString key="text">Цель игры - угадать название страны с шести попыток.
 После каждой попытки цвет букв будет меняться, 
-чтобы показать, какие буквы есть в загаданном слове! Например, мы пытаемся отгадать слово ГОCТЬ.  Первым мы ввели слово Ребус. Буква С есть в загаданном слове, но стоит в другом месте.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+чтобы показать, какие буквы есть в загаданном слове! Например, мы пытаемся отгадать слово ГОCТЬ. Первым мы ввели слово Ребус. Буква С есть в загаданном слове, но стоит в другом месте.</mutableString>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image0" translatesAutoresizingMaskIntoConstraints="NO" id="MTn-ov-lhV">
-                                        <rect key="frame" x="0.0" y="192" width="343" height="25"/>
+                                        <rect key="frame" x="0.0" y="122.5" width="343" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="beZ-4Y-QxQ"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Затем ввели слово Сосна. Буква С и О есть в загаданном слове и стоят на правильных местах." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXv-us-G3z">
-                                        <rect key="frame" x="0.0" y="225" width="343" height="31.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <rect key="frame" x="0.0" y="155.5" width="343" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image3" translatesAutoresizingMaskIntoConstraints="NO" id="jca-mJ-4cw">
-                                        <rect key="frame" x="0.0" y="264.5" width="343" height="25"/>
+                                        <rect key="frame" x="0.0" y="192.5" width="343" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="T5y-Wk-6MW"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iog-n3-rup">
-                                        <rect key="frame" x="0.0" y="297.5" width="343" height="93.5"/>
+                                        <rect key="frame" x="0.0" y="225.5" width="343" height="72"/>
                                         <string key="text">Обратите внимание, что если в введенном слове две одинаковых буквы, а в загаданном слове только одна такая буква, то выделяется только одна буква.
-
 Если слово угадано правильно, то все буквы будут выделены!</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image2" translatesAutoresizingMaskIntoConstraints="NO" id="tDk-nR-3Gk">
-                                        <rect key="frame" x="0.0" y="399" width="343" height="25"/>
+                                        <rect key="frame" x="0.0" y="305.5" width="343" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="VnY-Fh-cvI"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7X-MR-rBO">
-                                        <rect key="frame" x="0.0" y="432" width="343" height="78"/>
+                                        <rect key="frame" x="0.0" y="338.5" width="343" height="57.5"/>
                                         <string key="text">Если буквы нет в загаданном слове, то она выделяется серым. Также важно знать, что в загаданном слове могут быть одинаковые буквы. По правилам русских кроссвордов буква Ё в словах заменена на E!</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image1" translatesAutoresizingMaskIntoConstraints="NO" id="fLc-uV-caj">
-                                        <rect key="frame" x="0.0" y="518" width="343" height="25"/>
+                                        <rect key="frame" x="0.0" y="404" width="343" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="XZ6-GK-cZm"/>
                                         </constraints>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Авторы: Сергей Иванов Алексей Голышков" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbN-Vj-0qJ">
+                                        <rect key="frame" x="0.0" y="437" width="343" height="57.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -1125,20 +1140,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="NAN-4L-vP4">
-                                <rect key="frame" x="16" y="166" width="343" height="75.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Смена цвета фона" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMw-Zc-GDW">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="fUE-5Y-80r">
-                                        <rect key="frame" x="-2" y="45.5" width="347" height="31"/>
-                                    </slider>
-                                </subviews>
-                            </stackView>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kr3-zs-RWt">
                                 <rect key="frame" x="184" y="426" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1146,13 +1147,6 @@
                                     <action selector="changeDifficultLevel" destination="5Of-mO-ukD" eventType="valueChanged" id="rXg-Gz-ejr"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Смена режима игры" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hs4-r7-6a7">
-                                <rect key="frame" x="31" y="371" width="353" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5 букв" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62U-Rp-p7l">
                                 <rect key="frame" x="267" y="431" width="51" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1167,23 +1161,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bOT-5j-0Sa">
-                                <rect key="frame" x="100" y="288" width="131" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="4 буквы"/>
-                                    <segment title="5 букв"/>
-                                </segments>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTF-A5-yfX">
-                                <rect key="frame" x="100" y="194" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ES3-AD-YPu">
-                                <rect key="frame" x="100" y="242" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Смена режима игры" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hs4-r7-6a7">
+                                <rect key="frame" x="16" y="96" width="353" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -1192,17 +1171,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jlY-gk-zT3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="NAN-4L-vP4" firstAttribute="top" secondItem="jlY-gk-zT3" secondAttribute="top" constant="70" id="Elk-2u-8S6"/>
-                            <constraint firstItem="NAN-4L-vP4" firstAttribute="leading" secondItem="jlY-gk-zT3" secondAttribute="leading" constant="16" id="bRY-tt-2tG"/>
-                            <constraint firstItem="jlY-gk-zT3" firstAttribute="trailing" secondItem="NAN-4L-vP4" secondAttribute="trailing" constant="16" id="e0y-dx-bIH"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sCp-1O-fnn"/>
                     <connections>
                         <outlet property="difficultLevelSwitch" destination="kr3-zs-RWt" id="Msg-aN-Nn4"/>
-                        <outlet property="label1" destination="lTF-A5-yfX" id="WVb-JJ-Wvc"/>
-                        <outlet property="label2" destination="ES3-AD-YPu" id="9kg-hI-cz7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y75-em-HG4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1211,16 +1183,30 @@
         </scene>
     </scenes>
     <resources>
+        <image name="StartScreen" width="1331" height="879"/>
+        <image name="exclamationmark.bubble.fill" catalog="system" width="128" height="110"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="image0" width="610" height="128"/>
         <image name="image1" width="616" height="140"/>
         <image name="image2" width="608" height="124"/>
         <image name="image3" width="610" height="136"/>
         <image name="questionmark.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
