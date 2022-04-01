@@ -72,6 +72,8 @@ class GameScreenViewController: UIViewController {
         guard let settingsVC = segue.destination as? SettingsScreenViewController else { return }
         settingsVC.currentUser = currentUser
         settingsVC.delegate = self
+        guard let resultVC = segue.destination as? ResultScreenViewController else { return }
+        resultVC.currentUser = currentUser
     }
     
     //MARK: - IB Actions

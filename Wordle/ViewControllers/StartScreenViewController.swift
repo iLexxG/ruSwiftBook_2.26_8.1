@@ -32,6 +32,7 @@ class StartScreenViewController: UIViewController {
         
         performSegue(withIdentifier: "showGameScreen", sender: nil)
     }
+   
     
     private func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
