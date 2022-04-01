@@ -52,8 +52,8 @@
 		585795D527F3493F0021EFF7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				83FAAC6527ED905300D27F64 /* GameScreenViewController.swift */,
 				585795DD27F3677A0021EFF7 /* StartScreenViewController.swift */,
+				83FAAC6527ED905300D27F64 /* GameScreenViewController.swift */,
 				585795DF27F36C050021EFF7 /* AboutScreenViewController.swift */,
 				585795E127F36C310021EFF7 /* SettingsScreenViewController.swift */,
 				585795E327F36CAD0021EFF7 /* ResultScreenViewController.swift */,

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VBK-q4-9ex">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VBK-q4-9ex">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -809,7 +809,7 @@
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="6WB-Uo-zyv" kind="show" id="n9A-hl-YW8"/>
+                                            <segue destination="6WB-Uo-zyv" kind="show" identifier="showResultScreen" id="LTo-jZ-BeJ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -852,6 +852,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wAh-lq-d7V">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="R64-oD-bkG"/>
                         <barButtonItem key="leftBarButtonItem" title="Информация" image="questionmark.circle" catalog="system" id="jT2-di-U5A">
                             <connections>
                                 <segue destination="9qz-Re-tbZ" kind="presentation" id="TA6-aq-oMP"/>
@@ -859,7 +860,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Настройки" image="gearshape" catalog="system" id="8Vi-Sj-TpJ">
                             <connections>
-                                <segue destination="5Of-mO-ukD" kind="presentation" id="N1w-eh-9Sb"/>
+                                <segue destination="5Of-mO-ukD" kind="show" id="N1w-eh-9Sb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1004,9 +1005,7 @@
                             <outlet property="delegate" destination="6WB-Uo-zyv" id="7uH-HG-Q2O"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="6jA-m6-81O">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="aZC-UW-0FD"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="6jA-m6-81O"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sDE-f5-d4A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1123,11 +1122,11 @@
             <objects>
                 <viewController title="SettingsScreen" id="5Of-mO-ukD" customClass="SettingsScreenViewController" customModule="Wordle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uvN-rT-EfS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="NAN-4L-vP4">
-                                <rect key="frame" x="16" y="70" width="343" height="75.5"/>
+                                <rect key="frame" x="16" y="166" width="343" height="75.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Смена цвета фона" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMw-Zc-GDW">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
@@ -1176,6 +1175,20 @@
                                     <segment title="5 букв"/>
                                 </segments>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTF-A5-yfX">
+                                <rect key="frame" x="100" y="194" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ES3-AD-YPu">
+                                <rect key="frame" x="100" y="242" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jlY-gk-zT3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1185,8 +1198,11 @@
                             <constraint firstItem="jlY-gk-zT3" firstAttribute="trailing" secondItem="NAN-4L-vP4" secondAttribute="trailing" constant="16" id="e0y-dx-bIH"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="sCp-1O-fnn"/>
                     <connections>
                         <outlet property="difficultLevelSwitch" destination="kr3-zs-RWt" id="Msg-aN-Nn4"/>
+                        <outlet property="label1" destination="lTF-A5-yfX" id="WVb-JJ-Wvc"/>
+                        <outlet property="label2" destination="ES3-AD-YPu" id="9kg-hI-cz7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y75-em-HG4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
