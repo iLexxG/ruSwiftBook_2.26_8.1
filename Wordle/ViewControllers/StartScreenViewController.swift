@@ -32,7 +32,7 @@ class StartScreenViewController: UIViewController {
         
         performSegue(withIdentifier: "showGameScreen", sender: nil)
     }
-   
+    
     
     private func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -41,5 +41,20 @@ class StartScreenViewController: UIViewController {
         }
         alert.addAction(okAction)
         present(alert, animated: true)
+    }
+}
+
+// MARK: - Keyboard
+extension StartScreenViewController: UITextFieldDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == usernameTextField {
+            startButtonPressed()
+        }
+        return true
     }
 }

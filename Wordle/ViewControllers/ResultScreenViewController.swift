@@ -33,13 +33,14 @@ class ResultScreenViewController: UITableViewController {
             playerResults.append("Вы отгадали слово! 👍")
             playerResults.append("Да, это \"\(currentUser.currentWordle)\"")
             playerResults.append("Количество попыток: \(currentUser.succsesAttempt + 1)")
-            playerResults.append("Уровень сложности: \(currentUser.difficultLevel)")
+            playerResults.append("Вы - \(currentUser.playerRank.rawValue) (Кол-во подсказок: \(currentUser.helpsCount))")
         } else {
             playerResults.append("Вы не отгадали слово 🤦‍♂️")
             playerResults.append("А это \"\(currentUser.currentWordle)\"")
             playerResults.append("Количество угаданных букв: \(currentUser.guessedLetters)")
-            playerResults.append("Уровень сложности: \(currentUser.difficultLevel)")
+            playerResults.append("Попробуйте ещё... (Кол-во подсказок: \(currentUser.helpsCount))")
         }
+
         
         for index in 0..<tableView.numberOfRows(inSection: 0) {
             if indexPath.row == index {
