@@ -108,10 +108,13 @@ class GameScreenViewController: UIViewController {
         checkCorrectLetters()
         checkOtherLetters()
 
-        if enteredUserWord == currentUser.currentWordle || currentAttempt == 5 {
-            gameScreenButtonsSV.isHidden = true
-            animate(gameScreenButtonsSV, with: .transitionFlipFromTop)
-            endgameButtonsSV.isHidden = false
+        if enteredUserWord == currentUser.currentWordle {
+            currentUser.succsesAttempt = currentAttempt
+            currentUser.wordIsGuessed = true
+            endCurrentGame()
+        } else if currentAttempt == 5 {
+            currentUser.wordIsGuessed = false
+            endCurrentGame()
         } else {
             currentAttempt += 1
         }
@@ -186,7 +189,7 @@ class GameScreenViewController: UIViewController {
                 if let i = wordForMultiContainCheck.firstIndex(of: Character(currentUserLetter)) {
                     wordForMultiContainCheck.remove(at: i)
                 }
-                
+                currentUser.guessedLetters += 1
                 correctLettersIndexInGame.append(index)
                 correctLettersIndexInAttempt.append(index)
             }
@@ -219,6 +222,12 @@ class GameScreenViewController: UIViewController {
                 screenLettersButtons[currentScreenButton].backgroundColor = .systemGray
             }
         }
+    }
+    
+    private func endCurrentGame() {
+        gameScreenButtonsSV.isHidden = true
+        animate(gameScreenButtonsSV, with: .transitionFlipFromTop)
+        endgameButtonsSV.isHidden = false
     }
 }
 
@@ -280,6 +289,7 @@ extension GameScreenViewController: StartNewGameDelegate {
         currentAttempt = 0
         correctLettersIndexInGame = []
         self.currentUser.difficultLevel = level
+        currentUser.guessedLetters = 0
         currentUser.getRandomWorlde(on: level)
         label.text = currentUser.currentWordle
         
