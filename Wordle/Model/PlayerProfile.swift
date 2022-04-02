@@ -9,7 +9,7 @@ import Foundation
 
 struct PlayerProfile {
     var playerUsername = ""
-    var currentWordle = ""
+    var currentWordle: Countries = .ALGERIA
     var difficultLevel = 5
     var wordIsGuessed = false
     var guessedLetters = 0
@@ -19,9 +19,10 @@ struct PlayerProfile {
     
     mutating func getRandomWorlde(on level: Int) {
         if level == 5 {
-            currentWordle = DataStore.shared.fiveLetterCountries.randomElement() ?? ""
-        } else {
-            currentWordle = DataStore.shared.fourLetterCountries.randomElement() ?? ""
+            currentWordle = Countries.getRandomFiveLetterCountry()
+        }
+        else {
+            currentWordle = Countries.getRandomFourLetterCountry()
         }
     }
 }

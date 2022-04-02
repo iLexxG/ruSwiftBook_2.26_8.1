@@ -14,8 +14,6 @@ protocol StartNewGameDelegate {
 class GameScreenViewController: UIViewController {
     
     //MARK: - IB Outlets
-    @IBOutlet var label: UILabel!
-    
     @IBOutlet var screenLettersButtons: [UIButton]!
     @IBOutlet var manageButtons: [UIButton]!
     
@@ -37,7 +35,6 @@ class GameScreenViewController: UIViewController {
     @IBOutlet var fourthTryLevelFiveTF: [UITextField]!
     @IBOutlet var fifthTryLevelFiveTF: [UITextField]!
     @IBOutlet var sixthTryLevelFiveTF: [UITextField]!
-    
     
     //MARK: - Public properties
     var currentUser: PlayerProfile!
@@ -94,7 +91,7 @@ class GameScreenViewController: UIViewController {
     @IBAction func enterButtonPressed() {
         let enteredUserWord = getEnteredUserWord()
         correctLettersIndexInAttempt = []
-        wordForMultiContainCheck = currentUser.currentWordle
+        wordForMultiContainCheck = currentUser.currentWordle.description()
 
         if enteredUserWord.count != currentUser.difficultLevel {
             showAlert(
@@ -107,7 +104,7 @@ class GameScreenViewController: UIViewController {
         checkCorrectLetters()
         checkOtherLetters()
 
-        if enteredUserWord == currentUser.currentWordle {
+        if enteredUserWord == currentUser.currentWordle.description() {
             currentUser.wordIsGuessed = true
             endCurrentGame()
         } else if currentAttempt == 5 {
@@ -125,7 +122,7 @@ class GameScreenViewController: UIViewController {
         
         if currentAttempt == 5 || possibleIndexForHelp.isEmpty {
             for index in 0..<currentUser.difficultLevel {
-                currentTextFields[index].text = String(Array(currentUser.currentWordle)[index])
+                currentTextFields[index].text = String(Array(currentUser.currentWordle.description())[index])
             }
             enterButtonPressed()
             return
@@ -138,7 +135,7 @@ class GameScreenViewController: UIViewController {
             currentTextFields[index].backgroundColor = .systemGray
         }
 
-        currentTextFields[indexForHelp].text = String(Array(currentUser.currentWordle)[indexForHelp])
+        currentTextFields[indexForHelp].text = String(Array(currentUser.currentWordle.description())[indexForHelp])
         guard let currentScreenButton = DataStore.shared.letters.firstIndex(
             of: currentTextFields[indexForHelp].text ?? ""
         ) else { return }
@@ -171,9 +168,9 @@ class GameScreenViewController: UIViewController {
     }
     
     private func checkCorrectLetters() {
-        for index in 0..<currentUser.currentWordle.count {
+        for index in 0..<currentUser.currentWordle.description().count {
             let currentTextField = playerAnswers[currentAttempt][index]
-            let currentWordleLetter = String(Array(currentUser.currentWordle)[index])
+            let currentWordleLetter = String(Array(currentUser.currentWordle.description())[index])
             guard let currentUserLetter = currentTextField.text else { return }
             guard let currentScreenButton = DataStore.shared.letters.firstIndex(of: currentUserLetter) else { return }
             
@@ -196,7 +193,7 @@ class GameScreenViewController: UIViewController {
     }
     
     private func checkOtherLetters() {
-        for index in 0..<currentUser.currentWordle.count {
+        for index in 0..<currentUser.currentWordle.description().count {
             if correctLettersIndexInAttempt.contains(index) { continue }
             
             let currentTextField = playerAnswers[currentAttempt][index]
@@ -288,12 +285,13 @@ extension GameScreenViewController {
 extension GameScreenViewController: StartNewGameDelegate {
     func startNewGame(atLevel level: Int) {
         playerAnswers = []
-        currentAttempt = 0
         correctLettersIndexInGame = []
-        self.currentUser.difficultLevel = level
+        currentAttempt = 0
         currentUser.helpsCount = 0
         currentUser.guessedLetters = 0
         currentUser.getRandomWorlde(on: level)
+        self.currentUser.difficultLevel = level
+        
         
         if level == 5 {
             levelFourStackView.isHidden = true
