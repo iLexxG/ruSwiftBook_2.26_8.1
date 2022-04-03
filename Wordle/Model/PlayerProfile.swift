@@ -12,7 +12,7 @@ struct PlayerProfile {
     var currentWordle: Countries = .ALGERIA
     var difficultLevel = 5
     var wordIsGuessed = false
-    var guessedLetters = 0
+    var guessedLetters: [Int] = []
     var succsesAttempt = 0
     var helpsCount = 0
     var playerRank: Rank = .cheater
