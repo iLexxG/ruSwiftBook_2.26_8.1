@@ -185,7 +185,7 @@ class GameScreenViewController: UIViewController {
                 if let i = wordForMultiContainCheck.firstIndex(of: Character(currentUserLetter)) {
                     wordForMultiContainCheck.remove(at: i)
                 }
-                currentUser.guessedLetters += 1
+                currentUser.guessedLetters[index] = 1
                 correctLettersIndexInGame.append(index)
                 correctLettersIndexInAttempt.append(index)
             }
@@ -286,12 +286,15 @@ extension GameScreenViewController: StartNewGameDelegate {
     func startNewGame(atLevel level: Int) {
         playerAnswers = []
         correctLettersIndexInGame = []
+        currentUser.guessedLetters = []
         currentAttempt = 0
         currentUser.helpsCount = 0
-        currentUser.guessedLetters = 0
         currentUser.getRandomWorlde(on: level)
         self.currentUser.difficultLevel = level
         
+        for _ in 0..<level {
+            currentUser.guessedLetters.append(0)
+        }
         
         if level == 5 {
             levelFourStackView.isHidden = true

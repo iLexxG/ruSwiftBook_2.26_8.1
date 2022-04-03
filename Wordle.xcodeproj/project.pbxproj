@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		585795DC27F34C130021EFF7 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585795DB27F34C130021EFF7 /* DataStore.swift */; };
 		585795DE27F3677A0021EFF7 /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585795DD27F3677A0021EFF7 /* StartScreenViewController.swift */; };
-		585795E027F36C050021EFF7 /* AboutScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585795DF27F36C050021EFF7 /* AboutScreenViewController.swift */; };
 		585795E227F36C310021EFF7 /* SettingsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585795E127F36C310021EFF7 /* SettingsScreenViewController.swift */; };
 		585795E427F36CAD0021EFF7 /* ResultScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585795E327F36CAD0021EFF7 /* ResultScreenViewController.swift */; };
 		834A7FF327F37FD3000540A7 /* PlayerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834A7FF227F37FD3000540A7 /* PlayerProfile.swift */; };
@@ -24,7 +23,6 @@
 /* Begin PBXFileReference section */
 		585795DB27F34C130021EFF7 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		585795DD27F3677A0021EFF7 /* StartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
-		585795DF27F36C050021EFF7 /* AboutScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutScreenViewController.swift; sourceTree = "<group>"; };
 		585795E127F36C310021EFF7 /* SettingsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenViewController.swift; sourceTree = "<group>"; };
 		585795E327F36CAD0021EFF7 /* ResultScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScreenViewController.swift; sourceTree = "<group>"; };
 		834A7FF227F37FD3000540A7 /* PlayerProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerProfile.swift; sourceTree = "<group>"; };
@@ -54,7 +52,6 @@
 			children = (
 				585795DD27F3677A0021EFF7 /* StartScreenViewController.swift */,
 				83FAAC6527ED905300D27F64 /* GameScreenViewController.swift */,
-				585795DF27F36C050021EFF7 /* AboutScreenViewController.swift */,
 				585795E127F36C310021EFF7 /* SettingsScreenViewController.swift */,
 				585795E327F36CAD0021EFF7 /* ResultScreenViewController.swift */,
 			);
@@ -205,7 +202,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				834A7FF327F37FD3000540A7 /* PlayerProfile.swift in Sources */,
-				585795E027F36C050021EFF7 /* AboutScreenViewController.swift in Sources */,
 				83FAAC6627ED905300D27F64 /* GameScreenViewController.swift in Sources */,
 				585795E427F36CAD0021EFF7 /* ResultScreenViewController.swift in Sources */,
 				585795DC27F34C130021EFF7 /* DataStore.swift in Sources */,

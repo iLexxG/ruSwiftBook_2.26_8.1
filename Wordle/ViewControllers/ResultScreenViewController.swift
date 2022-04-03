@@ -36,8 +36,8 @@ class ResultScreenViewController: UITableViewController {
             playerResults.append("Вы - \(currentUser.playerRank.rawValue) (Кол-во подсказок: \(currentUser.helpsCount))")
         } else {
             playerResults.append("Вы не отгадали слово 🤦‍♂️")
-            playerResults.append("А это \"\(currentUser.currentWordle.description()) \(currentUser.currentWordle.rawValue)")
-            playerResults.append("Количество угаданных букв: \(currentUser.guessedLetters)")
+            playerResults.append("А это \(currentUser.currentWordle.description()) \(currentUser.currentWordle.rawValue)")
+            playerResults.append("Количество угаданных букв: \(currentUser.guessedLetters.filter {$0 == 1}.count)")
             playerResults.append("Попробуйте ещё... (Кол-во подсказок: \(currentUser.helpsCount))")
         }
 
