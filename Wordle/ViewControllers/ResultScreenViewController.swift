@@ -41,7 +41,6 @@ class ResultScreenViewController: UITableViewController {
             playerResults.append("Попробуйте ещё... (Кол-во подсказок: \(currentUser.helpsCount))")
         }
 
-        
         for index in 0..<tableView.numberOfRows(inSection: 0) {
             if indexPath.row == index {
                 content.text = playerResults[index]
